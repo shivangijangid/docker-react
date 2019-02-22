@@ -1,0 +1,6 @@
+sudo: required
+Services:
+ - docker
+
+before_install:
+ - docker build -t shivangijangid/docker-react -f Dockerfile .
