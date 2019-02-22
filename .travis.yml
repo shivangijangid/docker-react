@@ -6,7 +6,7 @@ before_install:
  - docker build -t shivangijangid/docker-react .
 
 script:
- - docker run -p 8080:8080 shivangijangid/docker-react
+ - docker run shivangijangid/docker-react nam run build
 
 deploy:
  provider: elasticbeanstalk
