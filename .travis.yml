@@ -5,9 +5,6 @@ services:
 before_install:
  - docker build -t shivangijangid/docker-react .
 
-script:
- - docker run shivangijangid/docker-react nam run build
-
 deploy:
  provider: elasticbeanstalk
  region: "us-east-1"
