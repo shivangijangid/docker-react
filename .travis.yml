@@ -1,6 +1,22 @@
 sudo: required
-Services:
+services:
  - docker
 
 before_install:
- - docker build -t shivangijangid/docker-react -f Dockerfile .
+ - docker build -t shivangijangid/docker-react .
+
+script:
+ - docker run -t shivangijangid/docker-react
+
+deploy:
+ provider: elasticbeanstalk
+ region: "us-east-1"
+ app: "docker"
+ env: "Docker-env"
+ bucket_name: "elasticbeanstalk-us-east-1-230410081615"
+ bucket_path: "docker"
+ on:
+   branch: master
+ access_key_id: $AWS_ACCESS_KEY
+ secret_access_key:
+   secure: "$AWS_SECRET_KEY"
