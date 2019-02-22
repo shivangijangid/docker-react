@@ -1,5 +1,5 @@
 # specify a base image
-FROM node:alpine as builder
+FROM node:alpine
 
 #specifying work directory to be used inside container
 WORKDIR '/app'
@@ -10,10 +10,10 @@ COPY package.json .
 #install dependencies
 RUN npm install
 COPY . .
-RUN npm run build
+#RUN npm run build
 
 #default command
-#CMD ["npm", "start"]
-FROM nginx
+CMD ["npm", "start"]
+#FROM nginx
 EXPOSE 80
-COPY --from=builder /app/build /usr/share/nginx/html
+#COPY --from=builder /app/build /usr/share/nginx/html
