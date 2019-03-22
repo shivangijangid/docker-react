@@ -1,0 +1,22 @@
+The json file:
+it is my configuration file.
+i cannot add any comment in my json file. any comment added will be read as a data.
+i have mentioned the key -> dependencies, and will mention dependencies to be used by my project.
+in order to run my app correctly, i need a copy of -> express, * -> any version of express
+put a comma after, to add one more section.
+i mention scripts -> start : so whenever i call start script it will run my index.js file.
+
+The index.js file:
+i have added comments.
+
+what we define in dockerfile is how the node js app will work.
+How Node JS apps work:
+1. have to install dependencies before running the app.
+  dependencies are installed by running 'npm install'
+2. have to run a command to start up a server
+  start server by running 'npm start'
+
+i will build my docker image by creating a tag. so that i don't have to mention the container id
+everytime to build the image.
+
+i will run my image first time by setting up a container port-mapping.
