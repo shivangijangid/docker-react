@@ -1,0 +1,10 @@
+sudo: required #docker to have superuser permissions
+services:
+  - docker #travis to understand docker cli is needed
+
+before_install: #define what to do before running tests or deploying project
+  - docker build -t shivangijangid/docker-react -f Dockerfile.dev .
+
+script: #commands to be executed to run our test suite
+  - docker run shivangijangid/docker-react npm run test -- --coverage #last add-on is to make sure that npm run test exits
+  

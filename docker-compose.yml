@@ -1,8 +1,19 @@
-version: '3' #specifies version of docker-compose with formatted file
-services: #to define type of containers
-  redis-server: #first container
-    image: 'redis' #to use the image from docker hub
-  node-app: #second container
-    build: . #need this container to be built using Dockerfile present at same dir
-    ports: #container port mapping
-      - "4001:8081" # a - in yml file specify an array, so we can map many ports here
+version: '3'
+services:
+  web: #container name
+    build:
+      context: . #specifying where we want all context for this image to be pulled from
+      dockerfile: Dockerfile.dev #as the name of our dockerfile is different here
+    ports:
+      - "3000:3000"
+    volumes: #docker volume to map folder inside container to the one in local
+      - /app/node_modules #states- do not try to map folder up against /app/mode_modules inside container
+      - .:/app #map current working directory in local to app folder in container
+  tests: #this container is solely to run tests
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"] #to ovveride the default CMD inside Dockerfile
