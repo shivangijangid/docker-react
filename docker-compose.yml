@@ -1,0 +1,8 @@
+version: '3' #specifies version of docker-compose with formatted file
+services: #to define type of containers
+  redis-server: #first container
+    image: 'redis' #to use the image from docker hub
+  node-app: #second container
+    build: . #need this container to be built using Dockerfile present at same dir
+    ports: #container port mapping
+      - "4001:8081" # a - in yml file specify an array, so we can map many ports here
