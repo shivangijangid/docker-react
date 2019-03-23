@@ -1,0 +1,12 @@
+apiVersion: v1 #
+kind: Pod #object used to run containers
+metadata: #name the pod that is created
+  name: client-pod
+  labels: #labelled with key-value pair so that service is able to find it out
+    component: web
+spec:
+  containers: #that we want to run inside Pod
+    - name: client
+      image: stephengrider/multi-client
+      ports:
+        - containerPort: 3000 #port to expose to outside world

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service #used to set up networking inside k8s cluster
+metadata: #name of the service that is created
+  name: client-node-port
+spec:
+  type: NodePort #expose container to outside world. only good for dev purposes
+  ports: #collection of ports mapped to target object
+    - port: 3050 #port for any another pod in k8s cluster that wants to connect to our pod
+      targetPort: 3000 #port inside  pod that we want to open up the traffic to
+      nodePort: 31515 #nodeport is the one that we want to test locally in our browser
+  selector: #search pod with key-value pair as component named web
+    component: web

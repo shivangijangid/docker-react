@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 5 #specifying number of different identical pods it needs to make
+  selector: #mapping to pod
+    matchLabels:
+      component: web
+  template: #defining Pod
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: stephengrider/multi-client
+          ports:
+            - containerPort: 3000
